@@ -1,0 +1,21 @@
+# CODEOWNERS for mobile
+# See: https://github.com/localstore-platform/specs/blob/v1.1-specs/documentation/codeowners-examples.md
+
+# Global owners
+* @donggiangthai
+
+# Documentation
+/docs/ @donggiangthai
+README.md @donggiangthai
+
+# Core infrastructure
+/lib/core/ @donggiangthai
+
+# Features
+/lib/features/ @donggiangthai
+
+# Localization
+/lib/l10n/ @donggiangthai
+
+# CI/CD
+/.github/ @donggiangthai
