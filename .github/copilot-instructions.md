@@ -1,126 +1,170 @@
-# GitHub Copilot Instructions – mobile
+# GitHub Copilot Instructions – Mobile Repository
 
-Extends the global instructions from [specs/.github/copilot-instructions.md](https://github.com/localstore-platform/specs/blob/v1.1-specs/.github/copilot-instructions.md).
+This extends the global instructions from the [specs repository](https://github.com/localstore-platform/specs/blob/v1.1-specs/.github/copilot-instructions.md).
 
 ## Repository Context
 
 - **Repository:** mobile
-- **Type:** Flutter 3.x Mobile App (iOS + Android)
-- **Tech Stack:** Flutter 3.x, Dart 3.x, Riverpod 2.4, Dio + Retrofit, Hive, Firebase Cloud Messaging
+- **Purpose:** Flutter mobile app for restaurant owners to manage their business
+- **Tech Stack:** Flutter 3.x, Dart 3.x, Riverpod 2.4, Dio, Hive, Firebase
+- **Status:** 🟡 Planned for Sprint 1 (after Sprint 0.5 Menu Demo)
 - **Spec Version:** v1.1-specs
-- **Spec Links:** See [docs/SPEC_LINKS.md](../docs/SPEC_LINKS.md)
 
-## Specific Guidelines
+---
 
-### Code Style
+## 🚀 "Continue Work" Trigger
 
-- Follow [Effective Dart](https://dart.dev/guides/language/effective-dart) guidelines
-- Use `dart format` for consistent formatting
-- Prefer `const` constructors where possible
-- Use named parameters for functions with 2+ parameters
-- Follow Clean Architecture with feature-first folder structure
+When the user says **"continue work"**, **"tiếp tục"**, or **"next task"**:
 
-### Architecture Patterns
+### Step 1: Read Local Progress
 
-- **State Management:** Riverpod 2.4 with code generation
-- **Networking:** Dio with Retrofit for type-safe API calls
-- **Local Storage:** Hive for offline-first caching
-- **Navigation:** go_router for declarative routing
-- **DI:** Riverpod providers (no external DI container)
+Read `docs/CURRENT_WORK.md` in this repository to understand:
 
-### Testing Requirements
+- Current sprint and focus
+- Which stories are assigned to this repo
+- Current status of each story (🔴 Not Started / 🟡 In Progress / ✅ Done)
+- Any blockers or notes from previous session
 
-- Unit tests for all business logic (providers, repositories)
-- Widget tests for UI components
-- Integration tests for critical user flows
-- Minimum 80% coverage for core features
+### Step 2: Identify Next Task
 
-### Vietnamese Localization
+From CURRENT_WORK.md:
 
-- Use `vi-VN` locale for all Vietnamese text
-- Currency format: `75.000₫` (dot separator, đồng symbol)
-- Date format: `dd/MM/yyyy` (Vietnamese standard)
-- All user-facing strings in `lib/l10n/`
-- Reference [Glossary](https://github.com/localstore-platform/specs/blob/v1.1-specs/knowledge-base/glossary.md) for translations
+1. If any story is 🟡 In Progress → continue that story
+2. Otherwise, pick the first 🔴 Not Started story
+3. If all stories are ✅ Done → report completion and suggest next sprint
 
-## Git Workflow
+### Step 3: Load Specifications
 
-**IMPORTANT**: Follow the git workflow defined in [docs/GIT_WORKFLOW.md](../docs/GIT_WORKFLOW.md).
+1. Check the "Spec References" section in CURRENT_WORK.md for the spec link
+2. Fetch and read the relevant specification section
+3. Primary spec: `flutter-mobile-app-spec.md` (entire file)
 
-Key rules:
+### Step 4: Implement
 
-- **Never commit directly to main branch**
-- If on main, create a new branch before committing
-- Branch naming: `<type>/<short-description>` (e.g., `feat/add-dashboard`)
-- Commit changes logically (group related changes)
-- After commits, push and create/update PR to main branch — **do not wait for confirmation**
-- Use conventional commit messages
+1. Follow the spec exactly
+2. Apply code standards from this file (see below)
+3. Clean Architecture, Riverpod state management
 
-### Commit Granularity Principle
+### Step 5: Update Progress
 
-Each commit should answer ONE of these questions:
+After implementation, **update `docs/CURRENT_WORK.md`**:
 
-- "What single feature/fix does this add?"
-- "What single purpose do these files serve together?"
+- Change story status from 🔴 to 🟡 (in progress) or ✅ (done)
+- Add notes about what was implemented
+- Add any blockers or follow-up items
+- Update "Last Updated" timestamp
 
-**Rule of thumb:** If you need "and" to describe the commit, split it.
+### Step 6: Git Workflow
 
-- ❌ `Add docs and config files` → Split
-- ❌ `Update README and add environment template` → Split
-- ✅ `Add GitHub PR template and CODEOWNERS` → OK (same purpose: GitHub config)
-- ✅ `Add specification links documentation` → OK (single purpose)
+1. Create/use feature branch: `feat/<story-description>`
+2. Commit with conventional message
+3. Run `flutter analyze && flutter test`
+4. Create PR when story is complete
 
-## Common Tasks
+### Step 7: Report
 
-### Adding a New Feature
+Tell the user:
 
-1. Check SPEC_LINKS.md for relevant specifications
-2. Load spec sections using semantic_search
-3. Implement following spec exactly
-4. Add tests matching spec examples
-5. Update documentation
+- What story you worked on
+- What was implemented
+- Current status
+- What's next
 
-### Adding a New Screen
+---
 
-1. Create feature folder: `lib/features/<feature_name>/`
-2. Add presentation layer: `presentation/screens/`, `presentation/widgets/`
-3. Add domain layer: `domain/entities/`, `domain/repositories/`
-4. Add data layer: `data/repositories/`, `data/datasources/`
-5. Register providers in feature's `providers.dart`
-6. Add route in `lib/core/router/`
+## Key Spec Files
 
-### Updating API Contracts
+| Spec File | Sections | Purpose |
+|-----------|----------|---------|
+| `architecture/flutter-mobile-app-spec.md` | Entire file | Complete app specification |
+| `architecture/flutter-mobile-app-spec.md` | Lines 90-470 | Project structure |
+| `architecture/flutter-mobile-app-spec.md` | Lines 205-800 | Feature screens |
+| `architecture/flutter-mobile-app-spec.md` | Lines 810-1105 | Design system |
+| `design/wireframes-ux-flow.md` | Lines 400-800 | Mobile owner dashboard |
 
-1. Ensure contracts repository is updated first
-2. Update this repository to use new contract version
-3. Regenerate Retrofit clients
-4. Run contract tests
-5. Update API documentation
+Also check `docs/SPEC_LINKS.md` for curated links with line numbers.
+
+---
+
+## Build & Test Commands
+
+```bash
+flutter pub get          # Install dependencies
+flutter run              # Run on device/emulator
+flutter test             # Run tests
+dart analyze             # Analyze code
+dart format .            # Format code
+flutter build apk --release   # Build Android APK
+flutter build ios --release   # Build iOS (requires macOS)
+dart run build_runner build   # Generate code (Riverpod, JSON)
+```
+
+---
 
 ## Project Structure
 
 ```text
 lib/
 ├── core/
-│   ├── constants/
-│   ├── router/
-│   ├── theme/
-│   └── utils/
+│   ├── theme/            # AppColors, Typography, Spacing
+│   ├── utils/            # Formatters (VND, dates)
+│   └── network/          # Dio client, interceptors
 ├── features/
-│   ├── auth/
-│   ├── dashboard/
-│   ├── menu/
-│   └── settings/
-├── l10n/
+│   ├── auth/             # Phone OTP login
+│   ├── dashboard/        # Metrics, trends
+│   ├── recommendations/  # AI suggestions
+│   └── notifications/    # Push notification list
 ├── shared/
-│   ├── providers/
-│   └── widgets/
+│   ├── widgets/          # AppButton, PhoneInput, EmptyState
+│   └── providers/        # Global Riverpod providers
 └── main.dart
 ```
 
+---
+
+## Code Standards
+
+### Clean Architecture
+
+- **Presentation:** Widgets, pages, state (Riverpod)
+- **Domain:** Entities, use cases, repository interfaces
+- **Data:** Repository implementations, data sources, DTOs
+
+### Riverpod Patterns
+
+- Use `@riverpod` annotation with code generation
+- `AsyncValue` for loading/error/data states
+- Family providers for parameterized data
+
+### Vietnamese Localization
+
+- Default locale: vi-VN
+- Currency: VND with format 75.000₫
+- All user-facing text in Vietnamese
+
+---
+
+## Git Workflow
+
+**CRITICAL:** Follow `docs/GIT_WORKFLOW.md`:
+
+- Never commit directly to main branch
+- Branch naming: `feat/<story-description>` (e.g., `feat/dashboard-home`)
+- Use conventional commit messages
+- Create PR after commits
+
+---
+
+## Dependencies
+
+- **Requires:** `api` repo for REST/GraphQL endpoints
+- **Uses:** `contracts` repo types as reference (not direct import in Dart)
+- **Firebase:** For push notifications
+
+---
+
 ## Related Documentation
 
-- [Main Specs Repository](https://github.com/localstore-platform/specs)
 - [Flutter Mobile App Spec](https://github.com/localstore-platform/specs/blob/v1.1-specs/architecture/flutter-mobile-app-spec.md)
-- [AI Context Guide](https://github.com/localstore-platform/specs/blob/v1.1-specs/.github/AI_CONTEXT_GUIDE.md)
-- [Spec Changelog](https://github.com/localstore-platform/specs/blob/v1.1-specs/SPEC_CHANGELOG.md)
+- [Wireframes & UX Flow](https://github.com/localstore-platform/specs/blob/v1.1-specs/design/wireframes-ux-flow.md)
+- [API Specification](https://github.com/localstore-platform/specs/blob/v1.1-specs/architecture/api-specification.md)
